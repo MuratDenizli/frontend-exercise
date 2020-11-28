@@ -1,0 +1,14 @@
+@import "reset";
+@import "https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap";
+
+body {
+  background-color: #303236;
+  font-family: Muli;
+}
+
+.component--search {
+  border-radius: 20px;
+  height: 40px;
+  background-color: aqua;
+  width: 430px;
+}
