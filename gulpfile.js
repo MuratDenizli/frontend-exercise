@@ -44,7 +44,7 @@ gulp.task("js", () => {
 });
 
 gulp.task("html", () => {
-  gulp
+  return gulp
     .src("src/1-search-filter-components/**/*.html")
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.stream());
