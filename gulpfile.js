@@ -7,6 +7,7 @@ const minifyJS = require("gulp-uglify");
 const concat = require("gulp-concat");
 const autoprefixer = require("gulp-autoprefixer");
 const del = require("del");
+const fileName="3-mobile-coin-wallet";
 
 //src/2-linkedin-redesign/**/
 gulp.task("browser-sync", () => {
@@ -19,7 +20,7 @@ gulp.task("browser-sync", () => {
 
 gulp.task("css", () => {
   return gulp
-    .src("src/2-linkedin-redesign/scss/**/*.scss")
+    .src(`src/${fileName}/scss/**/*.scss`)
     .pipe(
       sass({
         outputStyle: "nested",
@@ -36,7 +37,7 @@ gulp.task("css", () => {
 
 gulp.task("js", () => {
   return gulp
-    .src("src/2-linkedin-redesign/js/**/*.js")
+    .src(`src/${fileName}/js/**/*.js`)
     .pipe(concat("app.min.js"))
     .pipe(minifyJS())
     .pipe(gulp.dest("dist/js"))
@@ -45,21 +46,21 @@ gulp.task("js", () => {
 
 gulp.task("html", () => {
   return gulp
-    .src("src/2-linkedin-redesign/**/*.html")
+    .src(`src/${fileName}/**/*.html`)
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.stream());
 });
 
 gulp.task("font", () => {
   return gulp
-    .src("src/2-linkedin-redesign/**/*")
+    .src(`src/${fileName}/**/*`)
     .pipe(gulp.dest("dist"))
     .pipe(browserSync.stream());
 });
 
 gulp.task("img", () => {
   gulp
-    .src("src/2-linkedin-redesign/img/**/*")
+    .src(`src/${fileName}/img/**/*`)
     .pipe(minifyImg())
     .pipe(gulp.dest("dist/img"));
 });
@@ -69,10 +70,10 @@ gulp.task("delete", () =>
 );
 
 gulp.task("watch", () => {
-  gulp.watch("src/2-linkedin-redesign/scss/**/*.scss", gulp.task("css"));
-  gulp.watch("src/2-linkedin-redesign/js/**/*.js", gulp.task("js"));
-  gulp.watch("src/2-linkedin-redesign/img/**/*.img", gulp.task("img"));
-  gulp.watch("src/2-linkedin-redesign/**/*.html", gulp.task("html"));
+  gulp.watch(`src/${fileName}/scss/**/*.scss`, gulp.task("css"));
+  gulp.watch(`src/${fileName}/js/**/*.js`, gulp.task("js"));
+  gulp.watch(`src/${fileName}/img/**/*.img`, gulp.task("img"));
+  gulp.watch(`src/${fileName}/**/*.html`, gulp.task("html"));
 });
 
 gulp.task(
